@@ -80,36 +80,67 @@ using namespace std;
 //{
 //}
 
-class First
+//class First
+//{
+//public:
+//	First();
+//	First(int x_) {
+//		x = x_;
+//	}
+//	~First();
+//	friend int Sum(First& f, Second& s);
+//private:
+//	int x;
+//};
+
+
+//class Second
+//{
+//public:
+//	Second();
+//	Second(int x_) {
+//		x = x_;
+//	}
+//	~Second();
+//	friend int Sum(First& f, Second& s);
+//private:
+//	int x;
+//};
+
+//int Sum(First& f, Second& s) {
+//	return f.x + s.x;
+//}
+
+
+class Enemy
 {
 public:
-	First();
-	First(int x_) {
-		x = x_;
+	Enemy() {
+		life = 100;
 	}
-	~First();
-	friend int Sum(First& f, Second& s);
+	Enemy(int x) {
+		life = x;
+	}
+	friend Player;
 private:
-	int x;
+	int life;
 };
 
-
-class Second
+class Player
 {
 public:
-	Second();
-	Second(int x_) {
-		x = x_;
+	void Shoot(Enemy& e) {
+		cout << "Enemy life = " << e.life << endl;
 	}
-	~Second();
-	friend int Sum(First& f, Second& s);
-private:
-	int x;
-};
+	void Delete(Enemy& e) {
+		e.life = 0;
+		cout << "enemy deleted" << endl;
+	}
+	void Add(Enemy& e);
 
-int Sum(First& f, Second& s) {
-	return f.x + s.x;
-}
+private:
+
+};
 
 
 int main() 
@@ -126,6 +157,11 @@ int main()
 	c << cout;
 	c = -a;
 	c << cout;*/
+
+	Enemy e;
+	Player p;
+	p.Shoot(e);
+	p.Shoot(e);
 
 	system("pause");
 	return 0;
